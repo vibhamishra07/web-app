@@ -3,7 +3,7 @@ import Close from '../assets/Close.png'
 
 const Contact = ({handleContactBox}) => {
   return (
-    <div className='fixed top-0 left-0 w-full h-[100vh] bg-[#0006] flex justify-center items-center'>
+    <div className='fixed top-0 left-0 w-full h-[100vh] bg-[#0006] flex justify-center items-center z-50'>
         <div className='bg-[#FCEBE5] p-10 md:w-[40%] rounded-[16px] relative sm:w-[70%] max-sm:w-[90%] pt-4 cursor-pointer'>
             <div className='absolute right-5 text-black' onClick={handleContactBox}>
                 <img src={Close} height={'20px'} width={'20px'}/>

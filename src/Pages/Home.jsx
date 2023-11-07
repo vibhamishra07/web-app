@@ -3,13 +3,21 @@ import img1 from '../assets/Group 2.png'
 import img2 from '../assets/Group.png'
 
 const Home = () => {
-    const [images, setImages]=useState('');
-    const arr=['../assets/Group 2.png', '../assets/Group.png']
-    useEffect(()=>{
-        setTimeout(()=>{
-            setImages(img1)
-        })
-    }, [])
+    const [index, setIndex]=useState(0)
+    const arr=[img1, img2]
+
+    const length = arr.length;
+    console.log(length)
+
+    const nextSlide = () => {
+        setIndex(index === length - 1 ? 0 : index + 1);
+    };
+
+    const prevSlide = () => {
+        setIndex(index === 0 ? length - 1 : index - 1);
+    };
+
+
   return (
     <div className='w-full h-[100vh]'>
           <div className='w-full h-full flex justify-between md:flex-row sm:flex-col max-sm:flex-col'>
@@ -34,12 +42,23 @@ const Home = () => {
                 objectFit:'cover',
                 // position:'relative'
               }}>
-                <img src={img1} width={'100%'} height={'100%'}/>
-                <div className='absolute top-[50%] text-white m-auto pl-10'>
+                <img src={arr[index]} width={'100%'} height={'100%'} />
+                <div className='absolute top-[50%] text-white m-auto pl-10 '>
+                    {/* <img src={`${require('../assets/left-arrow.png')}`} className='absolute left-0 top-[50%]'/> */}
                     <div>Hello world!</div>
                     <div>Lorem ipsum dolor sit amet consectetur, adipisicing elit.  </div>
+                    
                 </div>
-                
+                {
+                    console.log(index)
+                }
+                <div className='h-full absolute top-[50%] text-white z-10 w-[48%]'>
+                    <div className='w-full flex justify-between'>
+                        <div onClick={prevSlide} > <img src={`${require('../assets/left-arrow.png')}`}/></div>
+                        <div onClick={nextSlide} className='cursor-pointer'> <img src={`${require('../assets/right-arrow.png')}`} /></div>
+                    </div>
+                </div>
+                {/* <img src={`${require('../assets/right-arrow.png')}`} onclick={()=>setImages((prev)=>prev+1)} className='absolute right-3 top-[50%] cursor-pointer'/> */}
               </div>
           </div>
     </div>
